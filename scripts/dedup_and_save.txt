@@ -1,0 +1,5 @@
+Entendimento rápido
+
+Lê os CSVs existentes; remove linhas duplicadas com base em cnpj; salva versões deduplicadas.
+
+Mantém a primeira ocorrência (útil quando a primeira tem mais informações).

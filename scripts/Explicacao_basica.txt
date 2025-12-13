@@ -1,0 +1,9 @@
+Explicação conceitual (por que fazer cada passo)
+
+Normalizar uf/municipio: evita que cada célula tenha um dict-string — facilita contagens, joins e visualizações. Ex.: RJ em vez de "{'id':19,...}".
+
+Deduplicar: evita contagem dupla e dados inconsistentes no relatório; importante quando a mesma query foi executada várias vezes.
+
+Salvar JSONL + CSV limpo + CSV completo: cobre necessidades de auditoria (raw_json), análise rápida (clean CSV) e armazenamento otimizado (parquet se quiser).
+
+Gerar gráficos: valida rapidamente hipóteses — por exemplo, se 80% das empresas concentram-se em 3 UFs você pode priorizar análises por estado.

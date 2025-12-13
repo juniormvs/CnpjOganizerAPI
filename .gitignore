@@ -1,0 +1,13 @@
+# Ambiente virtual
+.venv/
+
+# Dados
+data_raw/
+data_processed/
+
+# Cache
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store

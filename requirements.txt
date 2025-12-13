@@ -1,0 +1,6 @@
+requests
+pandas
+pyarrow
+tqdm
+urllib3
+matplotlib

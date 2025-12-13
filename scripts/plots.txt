@@ -1,0 +1,5 @@
+Observações
+
+Gera imagens PNG fáceis de compartilhar.
+
+Usa matplotlib; não especificamos cores para seguir boas práticas (e permitir tema do usuário).

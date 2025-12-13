@@ -1,0 +1,11 @@
+O que cada parte faz (linha a linha importante)
+
+ast.literal_eval tenta transformar string Python ({'id':1, 'nome':'X'}) em dict sem risco.
+
+json.loads tenta caso o campo seja JSON padrão ({"id":1,"nome":"X"}).
+
+parse_maybe_dict retorna sigla (para uf) ou nome (para municipio) quando detecta dicionário; se não, devolve texto original.
+
+Cria duas novas colunas: uf_norm e municipio_norm.
+
+Salva empresas_api_clean_norm.csv.
