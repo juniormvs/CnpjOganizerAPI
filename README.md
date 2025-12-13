@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📊 CNPJ Organizer API — Data Pipeline para Leads B2B
 
 Pipeline em Python para **coleta, limpeza, normalização e geração de leads B2B** a partir de CNPJs públicos.
@@ -89,3 +90,6 @@ Desenvolvedor Python | IA | Engenharia de Dados
 
 🔗 LinkedIn:
 https://www.linkedin.com/in/juniormvs
+=======
+# CnpjOganizerAPI
+>>>>>>> 89cecc73b4470943b64884ed71983fcd19fa7a41
