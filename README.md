@@ -1,95 +1,171 @@
-<<<<<<< HEAD
-# 📊 CNPJ Organizer API — Data Pipeline para Leads B2B
+# 🏢 CnpjOrganizerAPI
 
-Pipeline em Python para **coleta, limpeza, normalização e geração de leads B2B** a partir de CNPJs públicos.
+Pipeline em Python para **coleta, organização, limpeza, normalização e geração de leads B2B** a partir de dados de CNPJ.
 
-Projeto focado em **engenharia de dados aplicada**, automação e preparação de dados para uso comercial e analítico.
+Projeto focado em **engenharia de dados**, **tratamento de JSON**, **uso de APIs**, **Pandas** e **produtização de dados**, ideal para portfólio profissional.
 
----
 
-## 🚀 Objetivo do Projeto
 
-Transformar dados brutos de CNPJ em **listas limpas e segmentadas de empresas**, prontas para:
+## 🎯 Objetivo do Projeto
 
-- Prospecção B2B
-- Análise de mercado
-- Segmentação por CNAE
-- Integração com CRM
-- Produtos de dados
+Construir um fluxo completo que:
 
----
+- Consulta dados de empresas via API pública
+- Processa respostas complexas em JSON
+- Organiza dados em CSV
+- Normaliza informações estratégicas (CNAE)
+- Gera um **arquivo final pronto para prospecção B2B**
 
-## 🧠 O que este projeto demonstra
 
-- Consumo de API pública
-- Validação de dados
-- Manipulação de JSON complexo
-- Limpeza e normalização de dados
-- Engenharia de dados com Pandas
-- Boas práticas de projeto Python
+## 🧱 Estrutura do Projeto
 
----
-
-## 📁 Estrutura do Projeto
-
-CnpjOganizerAPI/
-├── data_raw/ # Dados de entrada (ignorado no Git)
-├── data_processed/ # Dados gerados (ignorado no Git)
-├── src/ # Código principal
-│ ├── clean_final_csv.py
-│ └── normalize_cnae.py
-├── scripts/ # Scripts auxiliares
-├── README.md
+```
+CnpjOrganizerAPI/
+├── data_raw/
+│   └── (arquivos de entrada com CNPJs)
+│
+├── data_processed/
+│   ├── empresas_api.csv
+│   ├── empresas_api_clean.csv
+│   ├── empresas_api_raw.jsonl
+│   ├── leads_b2b.csv
+│   └── leads_b2b_final.csv
+│
+├── scripts/
+│   ├── inspect.py
+│   └── plots.py
+│
+├── src/
+│   ├── fetch_api.py
+│   ├── clean_final_csv.py
+│   └── normalize_cnae.py
+│
 ├── requirements.txt
+├── README.md
 └── .gitignore
+```
 
 
----
+## ⚙️ Tecnologias Utilizadas
 
-## 🔧 Tecnologias Utilizadas
+
 
 - Python 3.11
 - Pandas
 - Requests
-- APIs públicas de CNPJ
-- Git & GitHub
+- Matplotlib
+- CSV / JSONL
+- Git e GitHub
+
+##  🔄 Pipeline de Dados
+### 1️⃣ Coleta de Dados via API
+
+
+```
+thon src/fetch_api.py
+
+```
+O script:
+
+- Lê CNPJs da pasta data_raw
+- Consulta uma API pública
+- Salva os dados em:
+  - CSV estruturado
+  - JSONL bruto para auditoria
+
+### 2️⃣ Inspeção e Análise Rápida
+```
+thon scripts/inspect.py
+
+```
+Gera:
+
+- KPIs básicos
+- Contagem de erros
+- Distribuição por UF e município
+- Amostra de sócios (quando disponível)
+
+### 3️⃣ Limpeza e Geração de Leads
+```
+python src/clean_final_csv.py
+
+```
+
+Resultados:
+
+- Padronização de telefone e email
+- Remoção de registros inválidos
+- Geração do arquivo leads_b2b.csv
+
+### 4️⃣ Normalização de CNAE
+
+```
+python src/normalize_cnae.py
+
+```
+
+Transforma o campo cnae_fiscal (JSON) em colunas separadas:
+
+- Código CNAE
+- Descrição CNAE
+
+Arquivo final gerado:
+
+```
+data_processed/leads_b2b_final.csv
+```
+## 📊 Exemplo de Colunas do Arquivo Final
+
+```
+cnpj
+razao_social
+nome_fantasia
+municipio
+uf
+telefone
+email
+cnae_codigo
+cnae_descricao
+
+```
+## 🧪 Como Abrir os Arquivos CSV
+Recomendado:
+
+- LibreOffice Calc
+- Abrir pelo próprio programa (Arquivo → Abrir)
+- Codificação: UTF-8
+- Separador: vírgula (,)
+
+## 🚀 Próximos Passos (Roadmap)
+
+- Validação automática de e-mails
+- Score de qualidade de leads
+- Filtros por CNAE estratégico
+- Exportação para CRM
+- Interface Web (Streamlit)
+
+## 👨‍💻 Autor
+
+**Mário Junior**
+
+Projeto desenvolvido como parte de evolução prática em:
+- Engenharia de Dados
+- Automação
+- Inteligência Artificial aplicada a negócios
 
 ---
 
-## ▶️ Como executar
+## Contato
 
-1️⃣ Criar ambiente virtual
-bash
-python -m venv .venv
-source .venv/bin/activate
+Mario Junior  
+Email: juniormvs@hotmail.com  
+Telefone: (adicione aqui seu telefone)
 
-2️⃣ Instalar dependências
-pip install -r requirements.txt
+LinkedIn: https://www.linkedin.com/in/juniormvs
 
-3️⃣ Executar o pipeline
-python src/clean_final_csv.py
-python src/normalize_cnae.py
+---
 
+## ⚠️ Aviso Legal
 
-Os arquivos finais serão gerados localmente no diretório data_processed/.
-
-📌 Observações Importantes
-
-Dados sensíveis não são versionados
-
-Os CSVs gerados servem apenas como exemplo local
-
-Projeto com foco educacional, técnico e demonstrativo
-
-Ideal para mostrar domínio em engenharia de dados Python
-
-👤 Autor
-
-Mário Júnior
-Desenvolvedor Python | IA | Engenharia de Dados
-
-🔗 LinkedIn:
-https://www.linkedin.com/in/juniormvs
-=======
-# CnpjOganizerAPI
->>>>>>> 89cecc73b4470943b64884ed71983fcd19fa7a41
+Projeto educacional e demonstrativo.
+Os dados utilizados devem respeitar a legislacao vigente (LGPD).
