@@ -1,74 +1,104 @@
-# 📊 CnpjOrganizerAPI
+# 📊 OrganizadorCNPJs — Data Pipeline em Python para Validação de CNPJs
 
-Pipeline de Engenharia de Dados em Python para coleta, limpeza, normalização e geração de leads B2B a partir de dados públicos de CNPJ.
+Pipeline em Python para **validação estrutural e qualidade de dados cadastrais de empresas (CNPJs)** em larga escala, baseado em regras determinísticas inspiradas em cenários corporativos reais.
 
-Projeto voltado para **engenharia de dados aplicada**, automação, transformação de dados e produção de artefatos para uso comercial e analítico.
+O projeto faz a **coleta, limpeza, normalização e organização** de dados públicos de CNPJs, preparando-os para uso analítico, comercial ou integração com outros sistemas.
+
+Projeto focado em **engenharia de dados aplicada**, análise de sistemas e boas práticas em Python.
 
 ---
 
-## 📌 Visão Geral
+## 🎯 Escopo atual
 
-Este projeto faz o seguinte:
+O projeto encontra-se na fase de **validação estrutural de dados**, com foco em garantir que os registros estejam corretamente formatados **antes da aplicação de regras de negócio mais complexas**.
 
-- Consome uma API pública de CNPJ  
-- Tratamento e validação de CNPJs  
-- Normalização de campos em JSON complexo  
-- Geração de CSVs limpos e prontos para análise  
-- Geração de **leads B2B** (empresas ativas com telefone/email)  
-- Normalização de CNAE (códigos e descrições)
+Nesta etapa, são aplicadas validações como:
+- Formato do CNPJ (14 dígitos numéricos)
+- Presença de campos obrigatórios
+- Validação e padronização de datas
+- Normalização de campos textuais
+- Estrutura mínima para processamento em escala
 
-Esse tipo de pipeline demonstra habilidades em Python, Pandas, APIs, transformação de dados e produção de resultados que agregam valor. :contentReference[oaicite:5]{index=5}
+---
+
+## 🧠 Por que validar dados antes?
+
+Em ambientes corporativos (bancos, ERPs, telecom, marketplaces B2B), dados inconsistentes geram:
+- falhas de integração
+- retrabalho operacional
+- análises imprecisas
+- riscos técnicos e de negócio
+
+Este projeto simula a **primeira camada de qualidade de dados**, fundamental antes do consumo por sistemas críticos ou analíticos.
+
+---
+
+## 🧭 Roadmap
+
+- [x] Estrutura inicial do projeto
+- [x] Definição das regras estruturais
+- [ ] Implementação completa das validações estruturais
+- [ ] Regras cadastrais e de negócio
+- [ ] Cruzamento e enriquecimento de dados
+- [ ] Automação e relatórios
+- [ ] (Futuro) Camada de IA generativa aplicada
+
+---
+
+## 🧠 O que este projeto demonstra
+
+- Consumo de APIs públicas
+- Validação e qualidade de dados
+- Manipulação de JSON estruturado
+- Limpeza e normalização com Pandas
+- Organização de pipelines de dados
+- Boas práticas em projetos Python
+
+---
+
+## 📁 Estrutura do Projeto
+
+
 
 ---
 
 ## 🗂️ Estrutura do Repositório
 
 ```text
-CnpjOrganizerAPI/
-├── data_raw/                # Dados de entrada (CNPJs puros)
-├── data_processed/          # Arquivos gerados pelo pipeline
-│   ├── empresas_api.csv
-│   ├── empresas_api_clean.csv
-│   ├── empresas_api_raw.jsonl
-│   ├── leads_b2b.csv
-│   └── leads_b2b_final.csv
-├── scripts/                 # Scripts de inspeção e análise
-│   ├── inspect.py
-│   └── plots.py
-├── src/                     # Código principal do pipeline
-│   ├── fetch_api.py
-│   ├── clean_final_csv.py
-│   └── normalize_cnae.py
-├── requirements.txt         # Dependências do projeto
-├── README.md                # Documentação principal
+OrganizadorCNPJs/
+├── data_raw/ # Dados de entrada (ignorado no Git)
+├── data_processed/ # Dados processados (ignorado no Git)
+├── src/ # Módulos do pipeline
+│ ├── clean_final_csv.py
+│ └── normalize_cnae.py
+├── run.py # Script principal de execução
+├── requirements.txt
+├── README.md
 └── .gitignore
 ```
 
 ---
 
-## 🧰 Tecnologias Utilizadas
-
-Este projeto foi construído com:
-
-- Python 3.11  
-- Pandas (manipulação de dados)  
-- Requests (consumo de APIs)  
-- CSV e JSONL (formatos de dados)  
-- (Opcional) Matplotlib (para análise exploratória)  
-- Git & GitHub  
 
 ---
 
-## ⚡ Como Executar o Pipeline
+## 🔧 Tecnologias Utilizadas
 
-### 1. Preparar Ambiente
+- Python 3.11
+- Pandas
+- Requests
+- APIs públicas de CNPJ
+- Git & GitHub
 
+---
+
+## ▶️ Como executar (forma simplificada)
+
+### 1️⃣ Criar e ativar ambiente virtual
 ```bash
 python -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate  # Linux / Mac
 ```
-
----
 
 ### 2. Instalar Dependências
 
@@ -78,59 +108,44 @@ pip install -r requirements.txt
 
 ---
 
-### 3. Executar Scripts
+### 3. Executar Scripts - Old
 
 ```bash
 python src/fetch_api.py          # coleta dados da API
 python src/clean_final_csv.py    # gera leads_b2b.csv
 python src/normalize_cnae.py     # gera leads_b2b_final.csv
 ```
+### 4. Executar o pipeline completo
 
----
-
-## 📈 O Que Você Gera
-
-Após execução, o arquivo principal de saída fica em:
+```bash
+python run.py
 
 ```
-data_processed/leads_b2b_final.csv
-```
-
-Esse arquivo contém colunas como:
-
-- `cnpj`  
-- `razao_social`  
-- `nome_fantasia`  
-- `municipio`  
-- `uf`  
-- `telefone`  
-- `email`  
-- `cnae_codigo`  
-- `cnae_descricao`
-
-Esses dados são úteis para prospecção, análises e integração com CRMs.
+O script run.py orquestra as etapas do pipeline e gera os arquivos processados no diretório data_processed/.
 
 ---
 
-## 🧠 Competências Demonstradas
+## 📌 Observações
 
-Este projeto mostra:
-
-- Engenharia de Dados aplicados  
-- Limpeza e transformação de dados reais  
-- Integração com APIs públicas  
-- Uso avançado de Pandas  
-- Produção de artefatos reutilizáveis  
-- Pipeline replicável e modular :contentReference[oaicite:6]{index=6}
+Dados sensíveis não são versionados
+Arquivos CSV servem apenas como exemplo local
+Projeto com foco educacional, técnico e demonstrativo
+Ideal para demonstrar fundamentos de engenharia de dados em Python
 
 ---
 
-## 🤝 Contato
+## 👤 Autor
 
-**Mario Junior**  
-Email: juniormvs@hotmail.com  
-Telefone: (adicione aqui seu telefone)  
+**Mário Júnior**
+
+Desenvolvedor Python | Engenharia de Dados | IA
+
+Email: juniormvs@hotmail.com
+
+Telefone: (+5518998037038)
+
 LinkedIn: https://www.linkedin.com/in/juniormvs
+
 
 ---
 
