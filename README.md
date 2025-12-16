@@ -174,6 +174,3 @@ LinkedIn: https://www.linkedin.com/in/juniormvs
 ## 📄 Licença / Aviso
 
 Projeto para fins educacionais. Recomenda-se atender às leis de privacidade e LGPD ao usar dados sensíveis.
-=======
-🔗 LinkedIn:
-https://www.linkedin.com/in/juniormvs
