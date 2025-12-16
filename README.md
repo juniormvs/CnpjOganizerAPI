@@ -1,6 +1,12 @@
 # 📊 OrganizadorCNPJs — Data Pipeline em Python para Validação de CNPJs
 
+<<<<<<< HEAD
 Pipeline em Python para **validação estrutural e qualidade de dados cadastrais de empresas (CNPJs)** em larga escala, baseado em regras determinísticas inspiradas em cenários corporativos reais.
+=======
+## OrganizadorCNPJs
+
+Pipeline em Python para validação estrutural e qualidade de dados cadastrais de empresas (CNPJs) em larga escala, baseado em regras determinísticas inspiradas em cenários corporativos reais. Até o momento está fazendo **coleta, limpeza, normalização e geração de leads B2B** a partir de CNPJs públicos.
+>>>>>>> 3860f01 (feat: add lead scoring and automated lead classification to data pipeline)
 
 O projeto faz a **coleta, limpeza, normalização e organização** de dados públicos de CNPJs, preparando-os para uso analítico, comercial ou integração com outros sistemas.
 
@@ -8,7 +14,43 @@ Projeto focado em **engenharia de dados aplicada**, análise de sistemas e boas 
 
 ---
 
+<<<<<<< HEAD
 ## 🎯 Escopo atual
+=======
+## Escopo atual
+
+O projeto encontra-se na fase de validação estrutural de dados, com foco em garantir que os registros recebidos estejam corretamente formatados antes de qualquer regra de negócio ou enriquecimento.
+
+Nesta etapa, são aplicadas validações como:
+- Formato do CNPJ (14 dígitos numéricos)
+- Campos obrigatórios não nulos
+- Validação de datas
+- Padronização de campos textuais
+- Estrutura mínima para processamento em escala
+
+## Por que validar dados antes?
+
+Em ambientes corporativos (bancos, ERPs, telecom e marketplaces B2B), dados inconsistentes geram:
+- erros de integração
+- retrabalho
+- decisões equivocadas
+- riscos operacionais
+
+Este projeto simula essa camada inicial de qualidade de dados, fundamental antes do consumo por sistemas críticos.
+
+## Roadmap
+
+- [x] Estrutura inicial do projeto
+- [x] Definição de regras estruturais
+- [ ] Implementação completa das validações estruturais
+- [ ] Regras cadastrais e de negócio
+- [ ] Cruzamento de dados
+- [ ] Automação e relatórios
+- [ ] (Futuro) Camada de IA generativa
+
+
+## 🚀 Objetivo do Projeto
+>>>>>>> 3860f01 (feat: add lead scoring and automated lead classification to data pipeline)
 
 O projeto encontra-se na fase de **validação estrutural de dados**, com foco em garantir que os registros estejam corretamente formatados **antes da aplicação de regras de negócio mais complexas**.
 
@@ -138,6 +180,7 @@ Ideal para demonstrar fundamentos de engenharia de dados em Python
 
 **Mário Júnior**
 
+<<<<<<< HEAD
 Desenvolvedor Python | Engenharia de Dados | IA
 
 Email: juniormvs@hotmail.com
@@ -152,3 +195,10 @@ LinkedIn: https://www.linkedin.com/in/juniormvs
 ## 📄 Licença / Aviso
 
 Projeto para fins educacionais. Recomenda-se atender às leis de privacidade e LGPD ao usar dados sensíveis.
+=======
+🔗 LinkedIn:
+https://www.linkedin.com/in/juniormvs
+
+
+
+>>>>>>> 3860f01 (feat: add lead scoring and automated lead classification to data pipeline)

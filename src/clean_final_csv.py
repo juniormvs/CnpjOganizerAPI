@@ -5,93 +5,103 @@ import re
 INPUT = "data_processed/leads_b2b.csv"
 OUTPUT = "data_processed/leads_b2b_clean.csv"
 
-# ===============================
-# 1. Carregar dados
-# ===============================
-df = pd.read_csv(INPUT)
-
-print(f"Registros iniciais: {len(df)}")
-print("Colunas:", df.columns.tolist())
-
-# ===============================
-# 2. Funções auxiliares
-# ===============================
-
-def extract_nome(value):
+def clean_final_csv():
+    
     """
-    Extrai o campo 'nome' de strings que representam dicionários.
-    Ex: "{'id': 19, 'nome': 'Rio de Janeiro'}" -> "Rio de Janeiro"
+    Executa a limpeza estrutural inicial dos dados de CNPJ.
     """
-    if pd.isna(value):
-        return ""
-    if isinstance(value, str) and value.startswith("{"):
-        try:
-            d = ast.literal_eval(value)
-            return d.get("nome", "")
-        except:
+    print("🧹 Executando limpeza estrutural...")
+    
+    # TODO: lógica atual de limpeza
+    # ===============================
+    # 1. Carregar dados
+    # ===============================
+    df = pd.read_csv(INPUT)
+
+    print(f"Registros iniciais: {len(df)}")
+    print("Colunas:", df.columns.tolist())
+
+    # ===============================
+    # 2. Funções auxiliares
+    # ===============================
+
+    def extract_nome(value):
+        """
+        Extrai o campo 'nome' de strings que representam dicionários.
+        Ex: "{'id': 19, 'nome': 'Rio de Janeiro'}" -> "Rio de Janeiro"
+        """
+        if pd.isna(value):
             return ""
-    return value
+        if isinstance(value, str) and value.startswith("{"):
+            try:
+                d = ast.literal_eval(value)
+                return d.get("nome", "")
+            except:
+                return ""
+        return value
 
 
-def only_digits(value):
-    """Remove tudo que não for número"""
-    if pd.isna(value):
-        return ""
-    return re.sub(r"\D", "", str(value))
+    def only_digits(value):
+        """Remove tudo que não for número"""
+        if pd.isna(value):
+            return ""
+        return re.sub(r"\D", "", str(value))
 
 
-# ===============================
-# 3. Limpezas por coluna
-# ===============================
+    # ===============================
+    # 3. Limpezas por coluna
+    # ===============================
 
-if "municipio" in df.columns:
-    df["municipio"] = df["municipio"].apply(extract_nome)
+    if "municipio" in df.columns:
+        df["municipio"] = df["municipio"].apply(extract_nome)
 
-if "uf" in df.columns:
-    df["uf"] = df["uf"].apply(extract_nome)
+    if "uf" in df.columns:
+        df["uf"] = df["uf"].apply(extract_nome)
 
-if "telefone" in df.columns:
-    df["telefone"] = df["telefone"].apply(only_digits)
+    if "telefone" in df.columns:
+        df["telefone"] = df["telefone"].apply(only_digits)
 
-if "cnpj" in df.columns:
-    df["cnpj"] = df["cnpj"].apply(only_digits)
+    if "cnpj" in df.columns:
+        df["cnpj"] = df["cnpj"].apply(only_digits)
 
-# ===============================
-# 4. Regras de negócio
-# ===============================
+    # ===============================
+    # 4. Regras de negócio
+    # ===============================
 
-if "situacao" in df.columns:
-    df = df[df["situacao"] == "Ativa"]
+    if "situacao" in df.columns:
+        df = df[df["situacao"] == "Ativa"]
 
-# ===============================
-# 5. Remover duplicados
-# ===============================
+    # ===============================
+    # 5. Remover duplicados
+    # ===============================
 
-if "cnpj" in df.columns:
-    df = df.drop_duplicates(subset=["cnpj"])
+    if "cnpj" in df.columns:
+        df = df.drop_duplicates(subset=["cnpj"])
 
-print(f"Registros finais: {len(df)}")
+    print(f"Registros finais: {len(df)}")
 
-# ===============================
-# 6. Seleção final de colunas
-# ===============================
+    # ===============================
+    # 6. Seleção final de colunas
+    # ===============================
 
-final_columns = [
-    "cnpj",
-    "razao_social",
-    "nome_fantasia",
-    "municipio",
-    "uf",
-    "telefone",
-    "email",
-    "cnae_fiscal"
-]
+    final_columns = [
+        "cnpj",
+        "razao_social",
+        "nome_fantasia",
+        "municipio",
+        "uf",
+        "telefone",
+        "email",
+        "cnae_fiscal"
+    ]
 
-df = df[final_columns]
+    df = df[final_columns]
 
-# ===============================
-# 7. Salvar CSV limpo
-# ===============================
+    # ===============================
+    # 7. Salvar CSV limpo
+    # ===============================
 
-df.to_csv(OUTPUT, index=False, encoding="utf-8-sig")
-print(f"CSV FINAL GERADO: {OUTPUT}")
+
+
+    df.to_csv(OUTPUT, index=False, encoding="utf-8-sig")
+    print(f"CSV FINAL GERADO: {OUTPUT}")

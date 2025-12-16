@@ -3,7 +3,7 @@
 
 # Dados
 data_raw/
-data_processed/
+data_processed/*.csv
 
 # Cache
 __pycache__/
@@ -11,3 +11,5 @@ __pycache__/
 
 # Sistema
 .DS_Store
+
+README.md
